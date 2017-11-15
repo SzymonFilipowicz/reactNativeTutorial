@@ -1,5 +1,5 @@
 <pre><code>npm install</code></pre>
-change "android/local.properties" $HOME  
+change "android/local.properties" $HOME  <br>
 
 reactNative makes possible to write mobile apps in Javascript (with node.js help). Support of dynamic layouts and changing objects/values within by using react components and global values and functions across classes makes stuff easy. 
 Installation :
@@ -24,7 +24,7 @@ export PATH=$PATH:$ANDROID_HOME/tools export
 PATH=$PATH:$ANDROID_HOME/platform-tools
 </code></pre>
 6. Create virtual device by selecting the "x86 Images" tab, then look for the Marshmallow API Level 23, x86_64 ABI image with a Android 6.0 (Google APIs).
-
+<br>
 You are setted up. Now you can create base project using console.
 1. Creating project :
 <pre><code>
@@ -41,13 +41,13 @@ cd AwesomeProject
 react-native run-android
 </code></pre>
 5. You should find app called TestProject on app list on using phone. Click it, it will take some time to connect. This it it. Now you can edit App.js and index.js to mess around with your app. 
-
+<br>
 reactNative makes possible to see changes almost instantly. In base mode, you can select your virtual device and press double R when app is on screen to refresh it. It is possible to see changes without any refresh on your side by turning on "hot changes". To do it, follow instructions below:
 1. Select your virtual device to be active window.
 2. Press CTRL+M inside your reactNative app
 3. Enable hot changes
 From now on, you don't have to refresh your app to see changes.
-
+<br>
 React variables :
 Inside layouts or anywhere inside .js files you can use {variable}. To prepare layout for dynamic changes, you need to set up at least one state in class constructor. Whenever components value changed, you need to ping layout about state changing for keeping layout actual.
 <pre><code>
@@ -62,7 +62,7 @@ Use global variables like "this.variableOfAnyType" that will be public across al
 this.globalID = 1;
 </code></pre>
 States can be used in many ways to resolve dynamic changes inside layout and are important part of reactNative (state driven).
-
+<br>
 AsyncStorage :
 You can save values in already implemented serialized structure called AsyncStorage. There are two steps into using it.
 1. To save data you need to import it and use async function as well :
@@ -87,7 +87,7 @@ readAsyncDataFunction = async(navigate) =&gt; {
 }
 </code></pre>
 Only async functions can use "await" before calling another async function to wait for return response
-
+<br>
 Widgets :
 To add widgets, import them into fileyou are using, just like this :
 <pre><code>
@@ -123,7 +123,7 @@ Text Input with text changing handler (and state changing) looks like this :
 /&gt;
 </code></pre>
 
-
+<br>
 reactNative is using [FETCH](https://facebook.github.io/react-native/docs/network.html) to retrieve online data (but as well you can use xhttp requests). Below is simple fetch example :
 <pre><code>
 async function getMoviesFromApi() {
@@ -207,7 +207,7 @@ onDeleteBTN = (navigate) =&gt; {
 	navigate('Profile')
 }
 </code></pre>
-
+<br>
 Layout and class files :
 To handle classes and layouts across multiple files, you need to do some changes. Remember to add flex to any XML object that contains others objects. <br>
 0. Easiest way is to define function in file and then just import whole file:
