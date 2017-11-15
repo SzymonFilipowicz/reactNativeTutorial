@@ -41,8 +41,8 @@ cd AwesomeProject
 react-native run-android
 </code></pre>
 5. You should find app called TestProject on app list on using phone. Click it, it will take some time to connect. This it it. Now you can edit App.js and index.js to mess around with your app. 
-<br>
-reactNative makes possible to see changes almost instantly. In base mode, you can select your virtual device and press double R when app is on screen to refresh it. It is possible to see changes without any refresh on your side by turning on "hot changes". To do it, follow instructions below:
+
+<br><br>reactNative makes possible to see changes almost instantly. In base mode, you can select your virtual device and press double R when app is on screen to refresh it. It is possible to see changes without any refresh on your side by turning on "hot changes". To do it, follow instructions below:
 1. Select your virtual device to be active window.
 2. Press CTRL+M inside your reactNative app
 3. Enable hot changes
@@ -55,15 +55,15 @@ this.setState({anyState: 'anyValue'})
 </code></pre>
 You should create function inside layout class, after constructor, to controll componets states. 
 
-Use global variables like "this.variableOfAnyType" that will be public across all app without any additional makes around. 
+<br><br>Use global variables like "this.variableOfAnyType" that will be public across all app without any additional makes around. 
 <pre><code>
 &lt;Button tittle={stringVar} &gt; 
 //to change still!!
 this.globalID = 1;
 </code></pre>
 States can be used in many ways to resolve dynamic changes inside layout and are important part of reactNative (state driven).
-<br>
-AsyncStorage :
+
+<br><br>AsyncStorage :
 You can save values in already implemented serialized structure called AsyncStorage. There are two steps into using it.
 1. To save data you need to import it and use async function as well :
 <pre><code>
@@ -87,8 +87,8 @@ readAsyncDataFunction = async(navigate) =&gt; {
 }
 </code></pre>
 Only async functions can use "await" before calling another async function to wait for return response
-<br>
-Widgets :
+
+<br><br>Widgets :
 To add widgets, import them into fileyou are using, just like this :
 <pre><code>
 import { Text } from 'react-native';
@@ -123,8 +123,7 @@ Text Input with text changing handler (and state changing) looks like this :
 /&gt;
 </code></pre>
 
-<br>
-reactNative is using [FETCH](https://facebook.github.io/react-native/docs/network.html) to retrieve online data (but as well you can use xhttp requests). Below is simple fetch example :
+<br><br>reactNative is using [FETCH](https://facebook.github.io/react-native/docs/network.html) to retrieve online data (but as well you can use xhttp requests). Below is simple fetch example :
 <pre><code>
 async function getMoviesFromApi() {
 	try {
@@ -138,7 +137,7 @@ native/movies.json');
 </code></pre>
 As you can see, you need to handle json type variable.
 
-Navigate :
+<br><br>Navigate :
 This is where it gets a little bit more tricky. To do layout changes, I choose [react-navigation](https://reactnavigation.org/docs/intro/quick-start) what will be explained below in short (due to beta version - hot changes and navigate, you need to reload to see new version of app outside of default screen) :
 1. Turn off app if running in console
 2. Write in console, inside project where package.json is:
@@ -207,8 +206,8 @@ onDeleteBTN = (navigate) =&gt; {
 	navigate('Profile')
 }
 </code></pre>
-<br>
-Layout and class files :
+
+<br><br>Layout and class files :
 To handle classes and layouts across multiple files, you need to do some changes. Remember to add flex to any XML object that contains others objects. <br>
 0. Easiest way is to define function in file and then just import whole file:
 <pre><code>
@@ -217,7 +216,7 @@ import  './src/file'; //easiest way is to add this line to App.js to be global
 functionName()    // use this function in every .js file now
 </code></pre>
 
-Class files :
+<br><br>Class files :
 1. Inside new layout files you need structure like this :
 <pre><code>
 import React from 'react';
@@ -231,7 +230,7 @@ import stuff from './src/file.js';
 stuff.abc(1);
 </code></pre>
 
-Layout files (to handle it, you need to use react navigation):
+<br><br>Layout files (to handle it, you need to use react navigation):
 1. Inside new layout files you need structure like this :
 <pre><code>
 import React from 'react';
@@ -265,7 +264,7 @@ const RootDrawer = DrawerNavigator({
 });
 </code></pre>
 
-System targeting and styles:
+<br><br>System targeting and styles:
 To declare variables targeted for platform, use construction like this :
 <pre><code>
 const instructions = Platform.select({
@@ -287,7 +286,7 @@ const styles = StyleSheet.create({
 });
 </code></pre>
 
-Handling dynamic components :
+<br><br>Handling dynamic components :
 You can use in XML sections your own classes that extends component of reactNative. You can pass to them whatever arguments you want to and they will be accesible under “props” variable. Example below show how to create blink text class :
 <pre><code>
 class Blink extends Component {
