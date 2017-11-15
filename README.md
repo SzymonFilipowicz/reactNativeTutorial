@@ -1,7 +1,7 @@
 <pre><code>npm install</code></pre>
-change "android/local.properties" $HOME  <br>
+change "android/local.properties" $HOME  
 
-reactNative makes possible to write mobile apps in Javascript (with node.js help). Support of dynamic layouts and changing objects/values within by using react components and global values and functions across classes makes stuff easy. 
+ <br><br>reactNative makes possible to write mobile apps in Javascript (with node.js help). Support of dynamic layouts and changing objects/values within by using react components and global values and functions across classes makes stuff easy. 
 Installation :
 First, we need to prepare environment ([Official tutorial](https://facebook.github.io/react-native/docs/getting-started.html)).  
 In short (for Linux → Android) :
@@ -24,8 +24,8 @@ export PATH=$PATH:$ANDROID_HOME/tools export
 PATH=$PATH:$ANDROID_HOME/platform-tools
 </code></pre>
 6. Create virtual device by selecting the "x86 Images" tab, then look for the Marshmallow API Level 23, x86_64 ABI image with a Android 6.0 (Google APIs).
-<br>
-You are setted up. Now you can create base project using console.
+
+<br><br>You are setted up. Now you can create base project using console.
 1. Creating project :
 <pre><code>
 react-native init TestProject
