@@ -1,20 +1,12 @@
-# reactNativeTutorial
-reactNative tutorial for newbies 
-
-<pre><code>
-npm install
-</code></pre>
-
-
 reactNative makes possible to write mobile apps in Javascript (with node.js help). Support of dynamically changing layouts and objects/values within by using react components and global values and functions across classes. 
 Installation :
-First, we need to prepare environment. (<a href=”>https://facebook.github.io/react-native/docs/getting-started.html”>Official tutorial</a>) 
+First, we need to prepare environment. ([Official tutorial](https://facebook.github.io/react-native/docs/getting-started.html)  
 In short (Linux → Android) :
 1. Open console and write :
 <pre><code>
 npm install -g react-native-cli
 </code></pre>
-2. Install <a href=”https://developer.android.com/studio/index.html”>Android Studio</a>
+2. Install [Android Studio](https://developer.android.com/studio/index.html) 
 3. Make sure you check during install 
 Android SDK
 Android SDK Platform
@@ -61,7 +53,7 @@ this.setState({anyState: 'anyValue'})
 To make stuff easy, to should create function inside layout class, after constructor. 
 You can use global variables like "this.variableOfAnyType" that will be public across all app without any additional makes around. 
 <pre><code>
-<Button tittle={stringVar} > 
+ &lt;Button tittle={stringVar} &gt; 
 this.globalID = 1;
 </code></pre>
 States can be used in many ways to resolve dynamic changes inside layout and are important part of reactNative (state driven).
@@ -70,7 +62,7 @@ You can save values in already implemented serialized structure calls AsyncStora
 1. To save data you need to import it and use async function :
 <pre><code>
 import {  AsyncStorage } from 'react-native';
-testAsync = async(someStr) => {
+testAsync = async(someStr) =&gt; {
   try {
     await AsyncStorage.setItem('@MySuperStore:key', 'someStr.');
   } catch (error) { }
@@ -79,7 +71,7 @@ testAsync(“hello async”); //you can call it whenever you want
 </code></pre>
 2. To read data, you need to call async function as well :
 <pre><code>
-readAsyncDataFunction = async(navigate) => {
+readAsyncDataFunction = async(navigate) =&gt; {
    try {
 	const val = await AsyncStorage.getItem('@MySuperStore:key');
 	if ( val !== null){
@@ -102,28 +94,28 @@ Some of the extensions are not in basic modules, so you need to install it with 
 <pre><code>
 npm install react-native-communications
 </code></pre>
-<a href=”https://github.com/anarchicknight/react-native-communications”>React-native-communications</a> makes possible to email, choose phone dial etc. You need to import it as well in file as above :
+[React-native-communications](https://github.com/anarchicknight/react-native-communications) makes possible to email, choose phone dial etc. You need to import it as well in file as above :
 <pre><code>
 import Communications from 'react-native-communications';
 Communications.phonecall('0123456789', true);
 </code></pre>
 Webview uses source arguments (remember to import in proper place):
 <pre><code>
-<WebView
+ &lt;WebView
 	source={{ uri: 'https://github.com/facebook/react-native' }}
 	style={{flex:1}}
-/>
+/&gt;
 </code></pre>
 Text Input with text changing inside state handling looks like this :
 <pre><code>
-<TextInput
+ &lt;TextInput
 	style={{height: 40}}
 	placeholder="Type here to translate!"
-	onChangeText={(text) => this.setState({text})}
-/>
+	onChangeText={(text) =&gt; this.setState({text})}
+/&gt;
 </code></pre>
 Fetch :
-reactNative is using <a href=”https://facebook.github.io/react-native/docs/network.html”>fetch</a> to retrieve online data, but as well you can use xhttp requests Below is simple fetch example :
+reactNative is using [fetch](https://facebook.github.io/react-native/docs/network.html) to retrieve online data, but as well you can use xhttp requests Below is simple fetch example :
 <pre><code>
 async function getMoviesFromApi() {
 	try {
@@ -137,7 +129,7 @@ native/movies.json');
 </code></pre>
 As you can see, you need to handle json type variable.
 Navigate :
-This is where it gets a little bit more tricky. To do layout changes, I choose <A href=”https://reactnavigation.org/docs/intro/quick-start”>react-navigation</a> what will be explained below in short (due to beta version - hot changes and navigate, you need to reload to see new version of app) :
+This is where it gets a little bit more tricky. To do layout changes, I choose [react-navigation](https://reactnavigation.org/docs/intro/quick-start) what will be explained below in short (due to beta version - hot changes and navigate, you need to reload to see new version of app) :
 1. Turn off app if running in console
 2. Write in console, inside project where package.json is:
 <pre><code>
@@ -159,14 +151,14 @@ class HomeScreen extends React.Component {
 	render() {
 		const { navigate } = this.props.navigation;
 		return (
-			<View style={{ flex: 1 }}><OtherObjects 					style={{flex:1}}></View> 
+			 &lt;View style={{ flex: 1 }}&gt; &lt;OtherObjects 					style={{flex:1}}&gt; &lt;/View&gt; 
 		); 
 	} 
 }
 </code></pre>
 5. Now we will make changes into App.js (you can turn on app as well now or after). Example below use two layouts screens defined before (HomeScreen and block). You need to delete
 <pre><code>
-export default class App extends Component<{}> { 
+export default class App extends Component &lt;{}&gt; { 
 	render() {return (layout) } 
 }
 </code></pre>
@@ -191,16 +183,16 @@ navigate('Profile')
 </code></pre>
 function to navigate across screens. Example below show how to handle button callback as well:
 <pre><code>
-<Button
+ &lt;Button
 	title={d}
-	onPress={() =>
+	onPress={() =&gt;
 		buttonPressFunction(navigate) //  or just navigate('Profile')
 	}
-/>
+/&gt;
 </code></pre>
 And function somewhere outside XML:
 <pre><code>
-onDeleteBTN = (navigate) => {
+onDeleteBTN = (navigate) =&gt; {
 	navigate('Profile')
 }
 </code></pre>
@@ -208,7 +200,7 @@ Layout and class files :
 To handle classes and layouts across multiple files, you need to do some changes. Remember to add flex to any XML object that contains others objects.
 0. Easiest way is to define function in file and then just import whole file:
 <pre><code>
-functionName = () => { //code here } //this go to new file with function
+functionName = () =&gt; { //code here } //this go to new file with function
 import  './src/file'; //easiest way is to add this line to App.js, 
 functionName()    // use this function in every .js file now
 </code></pre>
@@ -230,10 +222,10 @@ Layout files (to handle it, you need to use react navigation):
 <pre><code>
 import React from 'react';
 import { additionalModules } from 'react-native';
-const layoutName = () => (
-	<View style={{ flex: 1, otherCSS:value}}>
-		<XMLobjects style={{ flex: 1 }}>
-	</View>
+const layoutName = () =&gt; (
+	 &lt;View style={{ flex: 1, otherCSS:value}}&gt;
+		 &lt;XMLobjects style={{ flex: 1 }}&gt;
+	 &lt;/View&gt;
 );
 export default layoutName;
 </code></pre>
@@ -268,9 +260,9 @@ const instructions = Platform.select({
 </code></pre>
 And then use it as react variable: 
 <pre><code>
-<Text style={styles.instructions}>
+ &lt;Text style={styles.instructions}&gt;
 	{instructions}
-</Text>
+ &lt;/Text&gt;
 const styles = StyleSheet.create({
 	instructions: {		
 		textAlign: 'center',
@@ -287,8 +279,8 @@ class Blink extends Component {
 		super(props);
 		this.state = {showText: true};
 		// Toggle the state every second
-		setInterval(() => {
-			this.setState(previousState => {
+		setInterval(() =&gt; {
+			this.setState(previousState =&gt; {
 				return { showText: !previousState.showText };
 			});
 		}, 1000);
@@ -296,14 +288,14 @@ class Blink extends Component {
 	render() {
 		let display = this.state.showText ? this.props.text : ' ';
 		return (
-			<Text>{display}</Text>
+			 &lt;Text&gt;{display} &lt;/Text&gt;
 		);
 	}
 }
 </code></pre>
 And then add to XML section :
 <pre><code>
-<Blink text='I love to blink' />
+ &lt;Blink text='I love to blink' /&gt;
 </code></pre>
 
 Check it all implemented on :
