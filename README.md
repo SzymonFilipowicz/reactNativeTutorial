@@ -1,13 +1,11 @@
 <pre><code>npm install</code></pre>
 
-reactNative makes possible to write mobile apps in Javascript (with node.js help). Support of dynamically changing layouts and objects/values within by using react components and global values and functions across classes makes stuff easy. 
+reactNative makes possible to write mobile apps in Javascript (with node.js help). Support of dynamic layouts and changing objects/values within by using react components and global values and functions across classes makes stuff easy. 
 Installation :
 First, we need to prepare environment ([Official tutorial](https://facebook.github.io/react-native/docs/getting-started.html)).  
-In short (Linux → Android) :
+In short (for Linux → Android) :
 1. Open console and write :
-<pre><code>
-npm install -g react-native-cli
-</code></pre>
+<pre><code>npm install -g react-native-cli</code></pre>
 2. Install [Android Studio](https://developer.android.com/studio/index.html) 
 3. During installation make sure you check 
 - Android SDK
@@ -54,17 +52,19 @@ Inside layouts or anywhere inside .js files you can use {variable}. To prepare l
 <pre><code>
 this.setState({anyState: 'anyValue'})
 </code></pre>
-To make stuff easy, to should create function inside layout class, after constructor. 
-You can use global variables like "this.variableOfAnyType" that will be public across all app without any additional makes around. 
+You should create function inside layout class, after constructor, to controll componets states. 
+
+Use global variables like "this.variableOfAnyType" that will be public across all app without any additional makes around. 
 <pre><code>
- &lt;Button tittle={stringVar} &gt; 
+&lt;Button tittle={stringVar} &gt; 
+//to change still!!
 this.globalID = 1;
 </code></pre>
 States can be used in many ways to resolve dynamic changes inside layout and are important part of reactNative (state driven).
 
 AsyncStorage :
-You can save values in already implemented serialized structure calls AsyncStorage. There are two steps to use it.
-1. To save data you need to import it and use async function :
+You can save values in already implemented serialized structure called AsyncStorage. There are two steps into using it.
+1. To save data you need to import it and use async function as well :
 <pre><code>
 import {  AsyncStorage } from 'react-native';
 testAsync = async(someStr) =&gt; {
@@ -85,9 +85,10 @@ readAsyncDataFunction = async(navigate) =&gt; {
    } catch (error) {  }
 }
 </code></pre>
+Only async functions can use "await" before calling another async function to wait for return response
 
 Widgets :
-To add widgets, import them in you file like this :
+To add widgets, import them into fileyou are using, just like this :
 <pre><code>
 import { Text } from 'react-native';
 import { Text, Toast } from 'react-native'; //or multiple	
@@ -100,7 +101,7 @@ Some of the extensions are not in basic modules, so you need to install it with 
 <pre><code>
 npm install react-native-communications
 </code></pre>
-[React-native-communications](https://github.com/anarchicknight/react-native-communications) makes possible to email, choose phone dial etc. You need to import it as well in file as above :
+[React-native-communications](https://github.com/anarchicknight/react-native-communications) makes possible to email, choose phone dial etc. You need to import it as well in file below:
 <pre><code>
 import Communications from 'react-native-communications';
 Communications.phonecall('0123456789', true);
@@ -112,7 +113,7 @@ Webview uses source arguments (remember to import in proper place):
 	style={{flex:1}}
 /&gt;
 </code></pre>
-Text Input with text changing inside state handling looks like this :
+Text Input with text changing handler (and state changing) looks like this :
 <pre><code>
  &lt;TextInput
 	style={{height: 40}}
@@ -121,8 +122,8 @@ Text Input with text changing inside state handling looks like this :
 /&gt;
 </code></pre>
 
-Fetch :
-reactNative is using [fetch](https://facebook.github.io/react-native/docs/network.html) to retrieve online data, but as well you can use xhttp requests Below is simple fetch example :
+
+reactNative is using [FETCH](https://facebook.github.io/react-native/docs/network.html) to retrieve online data (but as well you can use xhttp requests). Below is simple fetch example :
 <pre><code>
 async function getMoviesFromApi() {
 	try {
@@ -137,7 +138,7 @@ native/movies.json');
 As you can see, you need to handle json type variable.
 
 Navigate :
-This is where it gets a little bit more tricky. To do layout changes, I choose [react-navigation](https://reactnavigation.org/docs/intro/quick-start) what will be explained below in short (due to beta version - hot changes and navigate, you need to reload to see new version of app) :
+This is where it gets a little bit more tricky. To do layout changes, I choose [react-navigation](https://reactnavigation.org/docs/intro/quick-start) what will be explained below in short (due to beta version - hot changes and navigate, you need to reload to see new version of app outside of default screen) :
 1. Turn off app if running in console
 2. Write in console, inside project where package.json is:
 <pre><code>
@@ -207,11 +208,11 @@ onDeleteBTN = (navigate) =&gt; {
 </code></pre>
 
 Layout and class files :
-To handle classes and layouts across multiple files, you need to do some changes. Remember to add flex to any XML object that contains others objects.
+To handle classes and layouts across multiple files, you need to do some changes. Remember to add flex to any XML object that contains others objects. <br>
 0. Easiest way is to define function in file and then just import whole file:
 <pre><code>
 functionName = () =&gt; { //code here } //this go to new file with function
-import  './src/file'; //easiest way is to add this line to App.js, 
+import  './src/file'; //easiest way is to add this line to App.js to be global
 functionName()    // use this function in every .js file now
 </code></pre>
 
@@ -223,7 +224,7 @@ import { additionalModules } from 'react-native';
 class stuff extends Component { static abc(a){ } }
 export default stuff;
 </code></pre>
-2. Now, when you have defined and exported class, you need to 	import it in file you want to use function abc and simple use it.
+2. Now, when you have defined and exported class, you need to import it in file you want to use function abc and simple use it.
 <pre><code>
 import stuff from './src/file.js';
 stuff.abc(1);
@@ -255,7 +256,7 @@ const RootDrawer = DrawerNavigator({
 		}
 	},
 	Profile: {
-		screen: block,
+		screen: layoutName,
 		navigationOptions: {
 			drawerLabel: 'Profile'
 		}
