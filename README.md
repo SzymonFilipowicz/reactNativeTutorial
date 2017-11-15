@@ -1,5 +1,5 @@
 <pre><code>npm install</code></pre>
-change android/local.properties $HOME sdk src 
+change "android/local.properties" $HOME  
 
 reactNative makes possible to write mobile apps in Javascript (with node.js help). Support of dynamic layouts and changing objects/values within by using react components and global values and functions across classes makes stuff easy. 
 Installation :
