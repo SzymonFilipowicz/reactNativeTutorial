@@ -1,21 +1,23 @@
-reactNative makes possible to write mobile apps in Javascript (with node.js help). Support of dynamically changing layouts and objects/values within by using react components and global values and functions across classes. 
+<pre><code>npm install</code></pre>
+
+reactNative makes possible to write mobile apps in Javascript (with node.js help). Support of dynamically changing layouts and objects/values within by using react components and global values and functions across classes makes stuff easy. 
 Installation :
-First, we need to prepare environment. ([Official tutorial](https://facebook.github.io/react-native/docs/getting-started.html)  
+First, we need to prepare environment ([Official tutorial](https://facebook.github.io/react-native/docs/getting-started.html)).  
 In short (Linux → Android) :
 1. Open console and write :
 <pre><code>
 npm install -g react-native-cli
 </code></pre>
 2. Install [Android Studio](https://developer.android.com/studio/index.html) 
-3. Make sure you check during install 
-Android SDK
-Android SDK Platform
-Android Virtual Device
-4. Set up Android SDK and virtual device (you can use real phone as well). All below should be checked in System Settings → Android SDK window (under SDK Platform → expand Android 6.0 (Marshmallow) :
-Google APIs, Android SDK Platform 23, 
-Intel x86 Atom_64 System Image, 		
-Google APIs Intel x86 
-Atom_64 System Image
+3. During installation make sure you check 
+- Android SDK
+- Android SDK Platform
+- Android Virtual Device
+4. Set up Android SDK and virtual device (you can use real phone as well). All below should be checked in System Settings → Android SDK window (under SDK Platform → expand Android 6.0 (Marshmallow)) :
+- Google APIs, Android SDK Platform 23, 
+- Intel x86 Atom_64 System Image, 		
+- Google APIs Intel x86 
+- Atom_64 System Image
 5. You can configure bash_profile file ($HOME/.bash_profile) by adding ANDROID_HOME src (not neccesery, we will make file to make around it later):
 <pre><code>
 export ANDROID_HOME=$HOME/Android/Sdk 
@@ -23,6 +25,7 @@ export PATH=$PATH:$ANDROID_HOME/tools export
 PATH=$PATH:$ANDROID_HOME/platform-tools
 </code></pre>
 6. Create virtual device by selecting the "x86 Images" tab, then look for the Marshmallow API Level 23, x86_64 ABI image with a Android 6.0 (Google APIs).
+
 You are setted up. Now you can create base project using console.
 1. Creating project :
 <pre><code>
@@ -33,18 +36,19 @@ react-native init TestProject
 sdk.dir = $HOME/Android/Sdk
 </code></pre>
 3. Turn on virtual device by clicking on AVD Manager inside Android Studio and double click setted up mirror.
-4. Turn on project inside android virtual phone
+4. Turn on project on your phone
 <pre><code>
 cd AwesomeProject
 react-native run-android
 </code></pre>
 5. You should find app called TestProject on app list on using phone. Click it, it will take some time to connect. This it it. Now you can edit App.js and index.js to mess around with your app. 
-Hot changes :
-On of the biggest advantage of reactNative is possibility to see changes almost instantly. In base mode, you can select your virtual device and press double R to refresh app. Facebook made one more step and added "hot changes". Turning on below:
+
+reactNative makes possible to see changes almost instantly. In base mode, you can select your virtual device and press double R when app is on screen to refresh it. It is possible to see changes without any refresh on your side by turning on "hot changes". To do it, follow instructions below:
 1. Select your virtual device to be active window.
 2. Press CTRL+M inside your reactNative app
 3. Enable hot changes
 From now on, you don't have to refresh your app to see changes.
+
 React variables :
 Inside layouts or anywhere inside .js files you can use {variable}. To prepare layout for dynamic changes, you need to set up at least one state in class constructor. Whenever components value changed, you need to ping layout about state changing for keeping layout actual.
 <pre><code>
@@ -57,6 +61,7 @@ You can use global variables like "this.variableOfAnyType" that will be public a
 this.globalID = 1;
 </code></pre>
 States can be used in many ways to resolve dynamic changes inside layout and are important part of reactNative (state driven).
+
 AsyncStorage :
 You can save values in already implemented serialized structure calls AsyncStorage. There are two steps to use it.
 1. To save data you need to import it and use async function :
@@ -80,6 +85,7 @@ readAsyncDataFunction = async(navigate) =&gt; {
    } catch (error) {  }
 }
 </code></pre>
+
 Widgets :
 To add widgets, import them in you file like this :
 <pre><code>
@@ -114,6 +120,7 @@ Text Input with text changing inside state handling looks like this :
 	onChangeText={(text) =&gt; this.setState({text})}
 /&gt;
 </code></pre>
+
 Fetch :
 reactNative is using [fetch](https://facebook.github.io/react-native/docs/network.html) to retrieve online data, but as well you can use xhttp requests Below is simple fetch example :
 <pre><code>
@@ -128,6 +135,7 @@ native/movies.json');
 }
 </code></pre>
 As you can see, you need to handle json type variable.
+
 Navigate :
 This is where it gets a little bit more tricky. To do layout changes, I choose [react-navigation](https://reactnavigation.org/docs/intro/quick-start) what will be explained below in short (due to beta version - hot changes and navigate, you need to reload to see new version of app) :
 1. Turn off app if running in console
@@ -144,14 +152,15 @@ npm install
 class HomeScreen extends React.Component {
 	constructor(props) {	
 		super(props);		
-		this.state = {text: ''};	//setting at least one state is important  	}					//to make refresh possible
+		this.state = {text: ''};	//setting at least one state is important  	
+	}					//to make refresh possible
 	static navigationOptions = {
 		title: 'Welcome',
 	};
 	render() {
 		const { navigate } = this.props.navigation;
 		return (
-			 &lt;View style={{ flex: 1 }}&gt; &lt;OtherObjects 					style={{flex:1}}&gt; &lt;/View&gt; 
+			&lt;View style={{ flex: 1 }}&gt; &lt;OtherObjects style={{flex:1}}&gt; &lt;/View&gt; 
 		); 
 	} 
 }
@@ -196,6 +205,7 @@ onDeleteBTN = (navigate) =&gt; {
 	navigate('Profile')
 }
 </code></pre>
+
 Layout and class files :
 To handle classes and layouts across multiple files, you need to do some changes. Remember to add flex to any XML object that contains others objects.
 0. Easiest way is to define function in file and then just import whole file:
@@ -204,19 +214,21 @@ functionName = () =&gt; { //code here } //this go to new file with function
 import  './src/file'; //easiest way is to add this line to App.js, 
 functionName()    // use this function in every .js file now
 </code></pre>
- Class files :
-2. Inside new layout files you need structure like this :
+
+Class files :
+1. Inside new layout files you need structure like this :
 <pre><code>
 import React from 'react';
 import { additionalModules } from 'react-native';
 class stuff extends Component { static abc(a){ } }
 export default stuff;
 </code></pre>
-3. Now, when you have defined and exported class, you need to 	import it in file you want to use function abc and simple use it.
+2. Now, when you have defined and exported class, you need to 	import it in file you want to use function abc and simple use it.
 <pre><code>
 import stuff from './src/file.js';
 stuff.abc(1);
 </code></pre>
+
 Layout files (to handle it, you need to use react navigation):
 1. Inside new layout files you need structure like this :
 <pre><code>
@@ -250,6 +262,7 @@ const RootDrawer = DrawerNavigator({
 	},
 });
 </code></pre>
+
 System targeting and styles:
 To declare variables targeted for platform, use construction like this :
 <pre><code>
@@ -271,6 +284,7 @@ const styles = StyleSheet.create({
 	},				//you can add multiple styles in this place
 });
 </code></pre>
+
 Handling dynamic components :
 You can use in XML sections your own classes that extends component of reactNative. You can pass to them whatever arguments you want to and they will be accesible under “props” variable. Example below show how to create blink text class :
 <pre><code>
