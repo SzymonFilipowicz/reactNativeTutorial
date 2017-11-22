@@ -1,8 +1,9 @@
 <pre><code>npm install</code></pre>
-change "android/local.properties" $HOME  
+change $HOME in "android/local.properties" into proper SDK path
+<pre><code>react-native run-android</code></pre>
 
- <br><br>reactNative makes possible to write mobile apps in Javascript (with node.js help). Support of dynamic layouts and changing objects/values within by using react components and global values and functions across classes makes stuff easy. 
-Installation :
+ <br><br><h3>HOW TO: </h3><br>
+Installation : <br>
 First, we need to prepare environment ([Official tutorial](https://facebook.github.io/react-native/docs/getting-started.html)).  
 In short (for Linux → Android) :
 1. Open console and write :
