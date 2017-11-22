@@ -13,12 +13,12 @@ In short (for Linux → Android) :
 - Android SDK
 - Android SDK Platform
 - Android Virtual Device
-4. Set up Android SDK and virtual device (you can use real phone as well). All below should be checked in System Settings → Android SDK window (under SDK Platform → expand Android 6.0 (Marshmallow)) :
+4. Set up Android SDK and virtual device (you can use real phone as well). All below should be checked in System Settings → Android SDK window (under SDK Platform → expand Android 6.0 (Marshmallow)) :<br>
 - Google APIs, Android SDK Platform 23, 
 - Intel x86 Atom_64 System Image, 		
 - Google APIs Intel x86 
 - Atom_64 System Image
-5. You can configure bash_profile file ($HOME/.bash_profile) by adding ANDROID_HOME src (not neccesery, we will make file to make around it later):
+5. You can configure bash_profile file ($HOME/.bash_profile) by adding ANDROID_HOME src (it works for every project then and you can skip creating file with path for every project):<br>
 <pre><code>
 export ANDROID_HOME=$HOME/Android/Sdk 
 export PATH=$PATH:$ANDROID_HOME/tools export 		
@@ -35,13 +35,13 @@ react-native init TestProject
 <pre><code>
 sdk.dir = $HOME/Android/Sdk
 </code></pre>
-3. Turn on virtual device by clicking on AVD Manager inside Android Studio and double click setted up mirror.
-4. Turn on project on your phone
+3. Turn on virtual device by clicking on AVD Manager inside Android Studio and choose proper mirror.
+4. Turn on project in console
 <pre><code>
-cd AwesomeProject
+cd TestProject
 react-native run-android
 </code></pre>
-5. You should find app called TestProject on app list on using phone. Click it, it will take some time to connect. This it it. Now you can edit App.js and index.js to mess around with your app. 
+5. You should find app called TestProject in app list on using phone. Click it. After some time need to connect, you will se base project. This it it. Now you can edit App.js and index.js to mess around with your app. 
 
 <br><br>reactNative makes possible to see changes almost instantly. In base mode, you can select your virtual device and press double R when app is on screen to refresh it. It is possible to see changes without any refresh on your side by turning on "hot changes". To do it, follow instructions below:
 1. Select your virtual device to be active window.
