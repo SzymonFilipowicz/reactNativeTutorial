@@ -1,6 +1,6 @@
-<pre><code>npm install</code></pre>
 change $HOME in "android/local.properties" into proper SDK path
-<pre><code>react-native run-android</code></pre>
+<pre><code>npm install
+react-native run-android</code></pre>
 
  <br><br><h3>HOW TO: </h3><br>
 Installation : <br>
