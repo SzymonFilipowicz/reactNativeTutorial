@@ -39,14 +39,14 @@ sdk.dir = $HOME/Android/Sdk
 <pre><code>
 org.gradle.daemon=true
 </code></pre>
-To make build faster.
-3. Turn on virtual device by clicking on AVD Manager inside Android Studio and choose proper mirror.
-4. Turn on project in console
+To make build faster.<br>
+4. Turn on virtual device by clicking on AVD Manager inside Android Studio and choose proper mirror.
+5. Turn on project in console (it's good to add "sudo" in case you need to install something during build)
 <pre><code>
 cd TestProject
 react-native run-android
 </code></pre>
-5. You should find app called TestProject in app list on using phone. Click it. After some time need to connect, you will se base project. This it it. Now you can edit App.js and index.js to mess around with your app. 
+6. You should find app called TestProject in app list on using phone. Click it. After some time need to connect, you will se base project. This it it. Now you can edit App.js and index.js to mess around with your app. 
 
 <br><br>reactNative makes possible to see changes almost instantly. In base mode, you can select your virtual device and press double R when app is on screen to refresh it. It is possible to see changes without any refresh on your side by turning on "hot changes". To do it, follow instructions below:
 1. Select your virtual device to be active window.
