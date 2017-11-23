@@ -35,6 +35,11 @@ react-native init TestProject
 <pre><code>
 sdk.dir = $HOME/Android/Sdk
 </code></pre>
+3. Add to gradle.properties 
+<pre><code>
+org.gradle.daemon=true
+</code></pre>
+To make build faster.
 3. Turn on virtual device by clicking on AVD Manager inside Android Studio and choose proper mirror.
 4. Turn on project in console
 <pre><code>
