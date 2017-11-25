@@ -18,7 +18,7 @@ In short (for Linux → Android) :
 - Intel x86 Atom_64 System Image, 		
 - Google APIs Intel x86 
 - Atom_64 System Image
-5. You can configure bash_profile file ($HOME/.bash_profile) by adding ANDROID_HOME src (it works for every project then and you can skip creating file with path for every project):<br>
+5. You can configure bash_profile file ($HOME/.bash_profile) by adding ANDROID_HOME src (if you do, you can skip creating file with path every time you start new project):<br>
 <pre><code>
 export ANDROID_HOME=$HOME/Android/Sdk 
 export PATH=$PATH:$ANDROID_HOME/tools export 		
@@ -35,18 +35,17 @@ react-native init TestProject
 <pre><code>
 sdk.dir = $HOME/Android/Sdk
 </code></pre>
-3. Add to gradle.properties 
+3. Add to gradle.properties if you want speed up app build:
 <pre><code>
 org.gradle.daemon=true
 </code></pre>
-To make build faster.<br>
 4. Turn on virtual device by clicking on AVD Manager inside Android Studio and choose proper mirror.
 5. Turn on project in console (it's good to add "sudo" in case you need to install something during build)
 <pre><code>
 cd TestProject
 react-native run-android
 </code></pre>
-6. You should find app called TestProject in app list on using phone. Click it. After some time need to connect, you will se base project. This it it. Now you can edit App.js and index.js to mess around with your app. 
+6. You should find app called TestProject in app list on using phone. Click it. After some time you will see your project. This it it. Now you can edit App.js and index.js to change your app. 
 
 <br><br>reactNative makes possible to see changes almost instantly. In base mode, you can select your virtual device and press double R when app is on screen to refresh it. It is possible to see changes without any refresh on your side by turning on "hot changes". To do it, follow instructions below:
 1. Select your virtual device to be active window.
@@ -55,11 +54,19 @@ react-native run-android
 From now on, you don't have to refresh your app to see changes.
 <br>
 React variables :
-Inside layouts or anywhere inside .js files you can use {variable}. To prepare layout for dynamic changes, you need to set up at least one state in class constructor. Whenever components value changed, you need to ping layout about state changing for keeping layout actual.
+Inside layout sections you can use {variable}. To prepare layout for dynamic changes, you need to set up at least one state in class constructor. Whenever {variable} value change, you need to ping layout about state changing for keeping it actual.
+<pre><code>
+constructor(props) {	
+	super(props);		
+	this.state = {anyState: 'some text'};	//setting at least one state is important  	
+}
+</code></pre>
+and then somewhere in same class:
 <pre><code>
 this.setState({anyState: 'anyValue'})
 </code></pre>
-You should create function inside layout class, after constructor, to controll componets states. 
+You should create function inside layout class, after constructor, to control layout states. It is good to use states itself to change variables with instant refresh.
+States can be used in many ways to resolve dynamic changes inside layout and are important part of reactNative (state driven).
 
 <br><br>Use global variables like "this.variableOfAnyType" that will be public across all app without any additional makes around. 
 <pre><code>
@@ -67,7 +74,6 @@ You should create function inside layout class, after constructor, to controll c
 //to change still!!
 this.globalID = 1;
 </code></pre>
-States can be used in many ways to resolve dynamic changes inside layout and are important part of reactNative (state driven).
 
 <br><br>AsyncStorage :
 You can save values in already implemented serialized structure called AsyncStorage. There are two steps into using it.
