@@ -35,11 +35,11 @@ react-native init TestProject
 <pre><code>
 sdk.dir = $HOME/Android/Sdk
 </code></pre>
-3. Add to gradle.properties if you want speed up app build:
+3. Add to android/gradle.properties line below, if you want speed up app build:
 <pre><code>
 org.gradle.daemon=true
 </code></pre>
-4. Turn on virtual device by clicking on AVD Manager inside Android Studio and choose proper mirror.
+4. Turn on virtual device by clicking on AVD Manager inside Android Studio and choosing proper mirror.
 5. Turn on project in console (it's good to add "sudo" in case you need to install something during build)
 <pre><code>
 cd TestProject
@@ -47,13 +47,14 @@ react-native run-android
 </code></pre>
 6. You should find app called TestProject in app list on using phone. Click it. After some time you will see your project. This it it. Now you can edit App.js and index.js to change your app. 
 
+Hot changes:<br>
 <br><br>reactNative makes possible to see changes almost instantly. In base mode, you can select your virtual device and press double R when app is on screen to refresh it. It is possible to see changes without any refresh on your side by turning on "hot changes". To do it, follow instructions below:
 1. Select your virtual device to be active window.
 2. Press CTRL+M inside your reactNative app
 3. Enable hot changes
 From now on, you don't have to refresh your app to see changes.
 <br>
-React variables :
+React variables:<br>
 Inside layout sections you can use {variable}. To prepare layout for dynamic changes, you need to set up at least one state in class constructor. Whenever {variable} value change, you need to ping layout about state changing for keeping it actual.
 <pre><code>
 constructor(props) {	
@@ -68,15 +69,15 @@ this.setState({anyState: 'anyValue'})
 You should create function inside layout class, after constructor, to control layout states. It is good to use states itself to change variables with instant refresh.
 States can be used in many ways to resolve dynamic changes inside layout and are important part of reactNative (state driven).
 
-<br><br>Use global variables like "this.variableOfAnyType" that will be public across all app without any additional makes around. 
+<br><br>Use global variables like "this.variableOfAnyType" that will be public across all app files without any additional stuff. 
 <pre><code>
 &lt;Button tittle={stringVar} &gt; 
 //to change still!!
 this.globalID = 1;
 </code></pre>
 
-<br><br>AsyncStorage :
-You can save values in already implemented serialized structure called AsyncStorage. There are two steps into using it.
+<br><br>AsyncStorage :<br>
+You can save values in already implemented serialized structure called AsyncStorage. You need to do two things to use it.
 1. To save data you need to import it and use async function as well :
 <pre><code>
 import {  AsyncStorage } from 'react-native';
@@ -100,8 +101,8 @@ readAsyncDataFunction = async(navigate) =&gt; {
 </code></pre>
 Only async functions can use "await" before calling another async function to wait for return response
 
-<br><br>Widgets :
-To add widgets, import them into fileyou are using, just like this :
+<br><br>Widgets :<br>
+To add widgets, import them into file you are using, just like this :
 <pre><code>
 import { Text } from 'react-native';
 import { Text, Toast } from 'react-native'; //or multiple	
@@ -114,12 +115,12 @@ Some of the extensions are not in basic modules, so you need to install it with 
 <pre><code>
 npm install react-native-communications
 </code></pre>
-[React-native-communications](https://github.com/anarchicknight/react-native-communications) makes possible to email, choose phone dial etc. You need to import it as well in file below:
+[React-native-communications](https://github.com/anarchicknight/react-native-communications) makes possible to email, choose phone dial etc. You need to import it after as well like below:
 <pre><code>
 import Communications from 'react-native-communications';
 Communications.phonecall('0123456789', true);
 </code></pre>
-Webview uses source arguments (remember to import in proper place):
+Webview (remember to import in proper place) uses source arguments :
 <pre><code>
  &lt;WebView
 	source={{ uri: 'https://github.com/facebook/react-native' }}
@@ -135,13 +136,12 @@ Text Input with text changing handler (and state changing) looks like this :
 /&gt;
 </code></pre>
 
-<br><br>reactNative is using [FETCH](https://facebook.github.io/react-native/docs/network.html) to retrieve online data (but as well you can use xhttp requests). Below is simple fetch example :
+<br><br>reactNative is using [FETCH](https://facebook.github.io/react-native/docs/network.html) to retrieve online data (you can use xhttp requests as well). Below is simple fetch example :
 <pre><code>
 async function getMoviesFromApi() {
 	try {
 		this.movies = "aba";
-		let response = await fetch('https://facebook.github.io/react
-native/movies.json');
+		let response = await fetch('https://facebook.github.io/react-native/movies.json');
 		let responseJson = await response.json();
   		return responseJson.movies;
 	} catch(error) { console.error(error); }
@@ -149,7 +149,7 @@ native/movies.json');
 </code></pre>
 As you can see, you need to handle json type variable.
 
-<br><br>Navigate :
+<br><br>Navigate :<br>
 This is where it gets a little bit more tricky. To do layout changes, I choose [react-navigation](https://reactnavigation.org/docs/intro/quick-start) what will be explained below in short (due to beta version - hot changes and navigate, you need to reload to see new version of app outside of default screen) :
 1. Turn off app if running in console
 2. Write in console, inside project where package.json is:
